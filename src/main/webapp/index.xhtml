@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>title</title>
+	
+	<script type="text/javascript">
+		function handleLoginRequest(xhr, status, args) {
+			console.log(xhr, status, args);
+			displayUpdated();
+		}
+	</script>
+
+</h:head>
+<h:body styleClass="bg-light">
+	<div class="container">
+		<div class="py-5 text-center"></div>
+		
+		<h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">Open</h:outputLink>
+		
+		
+		<div class="row">
+			<h:form>
+				<p:remoteCommand name="displayUpdated" actionListener="#{index.update}" update="@form"/>
+				
+				<h:outputLabel for="username" value="Username:" />
+            	<p:inputText id="username" value="#{index.username}" label="username" />
+            	
+            	<h:outputLabel for="password" value="Password:" />
+            	<p:inputText id="password" value="#{index.password}" label="password" />
+			</h:form>
+		</div>
+		
+		<ui:include src="/WEB-INF/html-components/login-dialog.xhtml" />
+	</div>
+</h:body>
+</html>
