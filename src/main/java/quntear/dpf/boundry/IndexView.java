@@ -13,6 +13,8 @@ public class IndexView implements Serializable {
 	
 	@Inject
 	private LoginBean loginBean;
+	@Inject
+	private LoginBean2 loginBean2;
 	
 	private String username;
 	private String password;
@@ -42,7 +44,7 @@ public class IndexView implements Serializable {
 	}
 	
 	public void update() {
-		this.username = loginBean.getUsername();
+		this.username = loginBean.getUsername() + " " + loginBean2.getUsername();
 		this.password = loginBean.getPassword();
 	}
 }

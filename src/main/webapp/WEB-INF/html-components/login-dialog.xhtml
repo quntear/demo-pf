@@ -4,8 +4,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-	<h:form id="loginDialogForm">
-		<p:dialog header="Login" widgetVar="dlg" resizable="false">
+	<p:dialog header="Login" widgetVar="dlg" resizable="false">
+		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel for="username" value="Username:" />
 				<p:inputText id="username" value="#{loginBean.username}" required="true" label="username" autocomplete="off"/>
@@ -17,6 +17,10 @@
 					<p:commandButton value="Login" oncomplete="handleLoginRequest(xhr, status, args)" />
 				</f:facet>
 			</h:panelGrid>
-		</p:dialog>
-	</h:form>
+		</h:form>
+		
+		<h:outputLink value="javascript:void(0)" onclick="PF('dlg2').show();" title="login">Open</h:outputLink>
+	</p:dialog>
+	
+	<ui:include src="/WEB-INF/html-components/login-dialog2.xhtml" />
 </ui:composition>
